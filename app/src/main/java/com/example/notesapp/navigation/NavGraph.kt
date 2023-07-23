@@ -7,10 +7,11 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.notesapp.presentation.screens.auth.AuthenticationScreen
 import com.example.notesapp.util.Constants.WRITE_SCREEN_ARGUMENT_KEY
 
 @Composable
-fun SetUpNavGraph(startDestination : String, navController : NavHostController) {
+fun SetUpNavGraph(startDestination: String, navController: NavHostController) {
     NavHost(navController = navController, startDestination = startDestination) {
         authenticationRoute()
         homeRoute()
@@ -20,13 +21,13 @@ fun SetUpNavGraph(startDestination : String, navController : NavHostController) 
 
 
 fun NavGraphBuilder.authenticationRoute() {
-    composable(route = Screen.Authentication.route){
-
+    composable(route = Screen.Authentication.route) {
+        AuthenticationScreen(loadingState = false, onButtonClicked = {})
     }
 }
 
 fun NavGraphBuilder.homeRoute() {
-    composable(route = Screen.Home.route){
+    composable(route = Screen.Home.route) {
 
     }
 }
@@ -34,12 +35,12 @@ fun NavGraphBuilder.homeRoute() {
 fun NavGraphBuilder.writeRoute() {
     composable(
         route = Screen.Write.route,
-        arguments = listOf(navArgument(name = WRITE_SCREEN_ARGUMENT_KEY){
+        arguments = listOf(navArgument(name = WRITE_SCREEN_ARGUMENT_KEY) {
             type = NavType.StringType
             nullable = true
             defaultValue = null
         })
-    ){
+    ) {
 
     }
 }
